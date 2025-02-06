@@ -39,13 +39,13 @@ const ReviewsListCard = ({ review }) => {
     }
     setClickedHelp(true);
     setHelpful(helpful + 1);
-    axios.put(`${process.env.API_URL}/reviews/${review.review_id}/helpful`,
+    axios.put(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${review.review_id}/helpful`,
     {
       review_id: review.review_id,
     },
     {
       headers: {
-      Authorization:process.env.AUTH_SECRET
+      Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET
       }
     })
     .catch((err) => {
@@ -61,13 +61,13 @@ const ReviewsListCard = ({ review }) => {
       return;
     }
     setClickedReport(true);
-    axios.put(`${process.env.API_URL}/reviews/${review.review_id}/report`,
+    axios.put(`${process.env.NEXT_PUBLIC_API_URL}/reviews/${review.review_id}/report`,
     {
       review_id: review.review_id,
     },
     {
       headers: {
-      Authorization:process.env.AUTH_SECRET
+      Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET
       }
     })
     .catch((err) => {

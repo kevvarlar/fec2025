@@ -52,7 +52,7 @@ const ProductForm = () => {
             })
 
           for(var i = 0; i < quantity; i++){
-            axios.post(process.env.API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.AUTH_SECRET} })
+            axios.post(process.env.NEXT_PUBLIC_API_URL + '/cart'  ,{sku_id:sku}, {headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
             .then((res)=>{
 
               alert('wow');

@@ -85,7 +85,7 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
     var formName = document.getElementById('nickname-form').value;
     var formEmail = document.getElementById('email-form').value;
 
-    axios.post(process.env.API_URL + '/reviews', {
+    axios.post(process.env.NEXT_PUBLIC_API_URL + '/reviews', {
         product_id: Product.id,
         rating: formRating,
         summary: formSummary,
@@ -96,7 +96,9 @@ const AddReviewModule = ({modalIsOpen, closeModal, setFormRating, formRating}) =
         photos: formUrls,
         characteristics: filteredProductChars,
     },
-    { headers: { 'Authorization': process.env.AUTH_SECRET }})
+    { headers: { 'Authorization': process.env.NEXT_PUBLIC_AUTH_SECRET }})
+    .then(() => {
+    })
     .catch((err) => {
       if (err.response && err.response.status === 429) {
         swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');

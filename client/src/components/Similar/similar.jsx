@@ -30,7 +30,7 @@ const Similar = () => {
       return;
     }
     const styleRequests = productIds.map((pid) =>
-      axios.get(`${process.env.API_URL}/products/${pid}/styles`, {headers: {Authorization: process.env.AUTH_SECRET}}));
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${pid}/styles`, {headers: {Authorization: process.env.NEXT_PUBLIC_AUTH_SECRET}}));
     Promise.all(styleRequests)
       .then((responses) => {
         const allStyles = responses.map((response, index) => ({
@@ -50,7 +50,7 @@ const Similar = () => {
       return;
     }
     const productRequests = productIds.map((pid) =>
-      axios.get(`${process.env.API_URL}/products/${pid}`, {headers: {Authorization: process.env.AUTH_SECRET}}));
+      axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${pid}`, {headers: {Authorization: process.env.NEXT_PUBLIC_AUTH_SECRET}}));
     Promise.all(productRequests)
       .then((responses) => {
         const allRelatedProducts = responses.map((response, index) => ({
@@ -73,7 +73,7 @@ const Similar = () => {
       swal('Product Id undefined in Similar Product');
       return;
     }
-    axios.get(`${process.env.API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${Product.id}/related`, {headers: {Authorization: process.env.NEXT_PUBLIC_AUTH_SECRET}})
     .then((response) => {
       // dispatch(RelatedActions.setRelated(response.data));
       getStyles(response.data);
@@ -85,7 +85,7 @@ const Similar = () => {
    };
 
    const getCurrentDetails = (currentId) => {
-    axios.get(`${process.env.API_URL}/products/${currentId}/styles`, {headers: {Authorization: process.env.AUTH_SECRET}})
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/products/${currentId}/styles`, {headers: {Authorization: process.env.NEXT_PUBLIC_AUTH_SECRET}})
       .then((response) => {
         setCurrentStyle(response.data);
       })

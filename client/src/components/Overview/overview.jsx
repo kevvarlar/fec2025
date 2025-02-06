@@ -1,10 +1,9 @@
-import React, {useState, lazy, Suspense, useEffect}  from 'react';
+
 /*global process*/
 /*eslint no-undef: "error"*/
-
 import {useDispatch, useSelector} from 'react-redux';
 import axios from 'axios';
-
+import React, {useState, lazy, Suspense, useEffect}  from 'react';
 import {PictureActions} from '../../store/PictureSlice.js';
 import {GalleryActions} from '../../store/GallerySlice.js';
 import {StylesActions} from '../../store/StylesSlice.js';
@@ -21,7 +20,7 @@ import StarDisplay from './overviewComponents/StarDisplay.jsx';
 // import threeQuarterStar from '../../../img/stars/threeQuarterStar.png'
 // import quarterStar from '../../../img/stars/quarterStar.png'
 
-const Overview = () => {
+const Overview = ({overview}) => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
 
@@ -33,7 +32,12 @@ const Overview = () => {
   const [score, setScore] = useState(0);
 
 
-
+  useEffect(() => {
+    dispatch(GalleryActions.setGallery(overview.gallery));
+    dispatch(PictureActions.setPicture(overview.picture));
+    dispatch(StylesActions.setStyles(overview.styles));
+    setPrice(overview.price);
+  }, [])
 
   useEffect(() => {
     if(ReviewsData){
@@ -50,8 +54,8 @@ const Overview = () => {
   ,[ReviewsData]);
   useEffect(() => {
 
-    if(Product.id){
-      axios.get(process.env.API_URL + `/products/${Product.id}/styles`,{headers: {Authorization:process.env.AUTH_SECRET} })
+    if(Product.id && Product.id !== 40344){
+      axios.get(process.env.NEXT_PUBLIC_API_URL + `/products/${Product.id}/styles`,{headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
         .then((result)=>{
 
           if(result.data.results){
@@ -63,7 +67,7 @@ const Overview = () => {
 
         })
     }
-  },[Product]);
+  },[Product.id]);
 
   useEffect(() => {
 

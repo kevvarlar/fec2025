@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "npx webpack && node server.js",
-    "server-dev": "npx nodemon --watch server server.js",
-    "client-dev": "npx webpack --watch",
-    "test": "jest test --collectCoverage --setupFiles dotenv/config",
-    "jest": "jest test --setupFiles dotenv/config",
-    "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\""
+    "test": "jest test --collectCoverage",
+    "jest": "jest test",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve@latest ./build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -31,6 +30,7 @@
     "install": "^0.13.0",
     "lightningcss": "^1.29.1",
     "lucide-react": "^0.474.0",
+    "next": "^15.1.6",
     "node": "^23.7.0",
     "path": "^0.12.7",
     "prop-types": "^15.8.1",

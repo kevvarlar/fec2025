@@ -17,7 +17,7 @@ const QA = () => {
   const dispatch = useDispatch();
   React.useEffect(() => {
     if (Product.id) {
-      axios.get(process.env.API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.get(process.env.NEXT_PUBLIC_API_URL + `/qa/questions?count=2147483647&product_id=${Product.id}`,{headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
         .then((result)=>{
           setQuestions(result.data.results);
           const action = result.data.results.slice(0, 4);

@@ -239,7 +239,6 @@ describe('Review\'s Components', () => {
     )});
 
     const image = addReviewModule.findByTestId('AddReviewModule-view');
-    console.log(image);
     expect(image).toBeDefined();
 
     waitFor(async () => {

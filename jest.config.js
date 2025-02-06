@@ -1,27 +1,19 @@
-/*global module process require*/
+/*global module require*/
 /*eslint no-undef: "error"*/
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
+const nextJest = require('next/jest');
 
 /** @type {import('jest').Config} */
-process.env.JEST_PUPPETEER_CONFIG = require.resolve('./jest-puppeteer.config.js');
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: './',
+})
+
+// Add any custom config to be passed to Jest
 const config = {
-  // preset: 'jest-puppeteer',
-  verbose : true,
-  moduleNameMapper: {
-    "\\.(css|jpg)$": "identity-obj-proxy",
-  },
-  bail: 100,
+  coverageProvider: 'v8',
   testEnvironment: 'jsdom',
-  transform: {
-    "\\.[jt]sx?$": "babel-jest",
-    '^.+\\.css$': 'jest-transform-css'
-  },
-  // preset: "jest-puppeteer",
-  testTimeout: 60000,
-};
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js']
+}
 
-
-module.exports = config;
+// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
+module.exports = createJestConfig(config)

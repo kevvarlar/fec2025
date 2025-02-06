@@ -25,7 +25,7 @@ const CreateAnswer = ({question, setRefresh}) => {
       });
       return;
     }
-    axios.post(process.env.API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, photos},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.NEXT_PUBLIC_API_URL + `/qa/questions/${question.question_id}/answers`, {body, name, email, photos},{headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
@@ -39,7 +39,7 @@ const CreateAnswer = ({question, setRefresh}) => {
   }
   const handleYes = () => {
     if (!clicked) {
-      axios.put(process.env.API_URL + `/qa/questions/${question.question_id}/helpful`, {}, {headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.put(process.env.NEXT_PUBLIC_API_URL + `/qa/questions/${question.question_id}/helpful`, {}, {headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
         .then( () => {
           setClicked(true);
           setRefresh({});

@@ -12,7 +12,7 @@ const Answer = ({answer, setRefresh, isClicked}) => {
 
   const handleYes = () => {
     if (!yes) {
-      axios.put(process.env.API_URL + `/qa/answers/${answer.id}/helpful`, {}, {headers: {Authorization:process.env.AUTH_SECRET} })
+      axios.put(process.env.NEXT_PUBLIC_API_URL + `/qa/answers/${answer.id}/helpful`, {}, {headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
         .then( () => {
           isClicked(false);
           setYes(true);
@@ -30,7 +30,7 @@ const Answer = ({answer, setRefresh, isClicked}) => {
     }
   }
   const handleReport = () => {
-    axios.put(process.env.API_URL + `/qa/answers/${answer.id}/report`, {}, {headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.put(process.env.NEXT_PUBLIC_API_URL + `/qa/answers/${answer.id}/report`, {}, {headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
         .then( () => {
           isClicked(false);
           setYes(true);

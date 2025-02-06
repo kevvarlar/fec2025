@@ -26,7 +26,7 @@ const CreateQuestion = ({questions, setQuestions, setRefresh}) => {
       });
       return;
     }
-    axios.post(process.env.API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.AUTH_SECRET} })
+    axios.post(process.env.NEXT_PUBLIC_API_URL + '/qa/questions', {body, name, email, product_id: Product.id},{headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
       .then(() => {
         setOpen(false);
         setRefresh({});
