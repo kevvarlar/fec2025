@@ -8,7 +8,6 @@ const RootLayout = ({ children }) => {
         <link rel="preconnect" href="https://fonts.googleapis.com"/>
         <link rel="icon" href="/icon" sizes="any" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true"/>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap" rel="stylesheet"/>
       </head>
       <body>
         <div id="root">{children}</div>
