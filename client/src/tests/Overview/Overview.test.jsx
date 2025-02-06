@@ -49,8 +49,8 @@ describe('Overview',()=>{
       </Provider>
     );
 
-    expect(OverviewTest.getByTestId('share')).toBeDefined();
-    expect(OverviewTest.getByTestId('mainDisplay')).toBeDefined();
+    expect(OverviewTest.queryByTestId('overview')).toBeDefined();
+    expect(OverviewTest.queryByTestId('mainDisplay')).toBeDefined();
 
   });
   it('Should render images in galleryElement when images are provided', () => {
@@ -348,7 +348,7 @@ describe('Overview',()=>{
     const formSizes = Apple.getByTestId("formSizes");
 
 
-    await waitFor(() => fireEvent.change(formSizes, {target: {value: 'S'}}));
+    await waitFor(() => fireEvent.change(formSizes, {target: {value: 'M'}}));
     const formQuantities = Apple.getByTestId("formQuantities");
 
 

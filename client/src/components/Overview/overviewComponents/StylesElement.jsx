@@ -18,8 +18,9 @@ const StylesElement = ({style, index}) => {
   })
   const dispatch = useDispatch();
    useEffect(() => {
+
     if(GalleryData.Gallery){
-    if(GalleryData.Gallery.photos[0].thumbnail_url===image){
+    if(GalleryData.Gallery.style_id===style.style_id){
       setBackground({
 
         borderRadius: '100000px',

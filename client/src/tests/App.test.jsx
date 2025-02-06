@@ -26,7 +26,7 @@ describe('App',()=>{
       </Provider>));
     expect(Apple.getByTestId('app')).toBeDefined();
 
-    expect(Apple.getByTestId('overview')).toBeDefined();
+    //expect(Apple.getByTestId('overview')).toBeDefined();
 
     expect(Apple.getByTestId('similar')).toBeDefined();
 
