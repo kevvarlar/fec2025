@@ -54,7 +54,7 @@ const Overview = ({overview}) => {
   ,[ReviewsData]);
   useEffect(() => {
 
-    if(Product.id && Product.id !== 40344){
+    if(Product.id){
       axios.get(process.env.NEXT_PUBLIC_API_URL + `/products/${Product.id}/styles`,{headers: {Authorization:process.env.NEXT_PUBLIC_AUTH_SECRET} })
         .then((result)=>{
 
