@@ -3,7 +3,6 @@
 import React from 'react';
 import Modal from '../../Reviews/PhotoModal.jsx';
 import PropTypes from 'prop-types';
-
 // eslint-disable-next-line react/prop-types, no-unused-vars
 const Photo = ({image}) => {
   const [open, setOpen] = React.useState(false);
