@@ -4,12 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Answers from './Answers.jsx';
 import CreateAnswer from './CreateAnswer.jsx';
-import {useSelector} from 'react-redux';
 
 const Question = ({question, setRefresh}) => {
   const [answersData, setAnswersData] = React.useState([])
   const [answers, setAnswers] = React.useState([]);
-  const QuestionsData = useSelector(store => store.QuestionsData);
   React.useEffect(() => {
     if(Object.keys(question.answers).length === 0) {
       return;
@@ -21,7 +19,7 @@ const Question = ({question, setRefresh}) => {
     answerArray.sort((a, b) => b.helpfulness - a.helpfulness);
     setAnswersData(answerArray);
     setAnswers(answerArray.slice(0, 2));
-  }, [QuestionsData]);
+  }, [question.answers]);
   return (
     <div data-testid="question">
       <div id="question">

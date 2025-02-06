@@ -24,7 +24,7 @@ const Overview = ({overview}) => {
   const dispatch = useDispatch();
   const Product = useSelector(store => store.Product);
 
-  const ReviewsData = useSelector(store => store.ReviewsData);
+  const ReviewsData = useSelector(store => store.ReviewsMeta);
 
 
   const GalleryData = useSelector(store => store.GalleryData);
@@ -40,13 +40,16 @@ const Overview = ({overview}) => {
   }, [])
 
   useEffect(() => {
+
     if(ReviewsData){
 
       var scoreTemp = 0;
-      for(var i = 0; i < ReviewsData.length;i++) {
-        scoreTemp+=ReviewsData[i].rating;
+      var reviewTotal = 0;
+      for(var stars in ReviewsData.ratings) {
+        scoreTemp += stars * ReviewsData.ratings[stars]
+        reviewTotal += Number(ReviewsData.ratings[stars]);
       }
-      scoreTemp/=ReviewsData.length;
+      scoreTemp/=reviewTotal;
       setScore(scoreTemp);
 
     }
