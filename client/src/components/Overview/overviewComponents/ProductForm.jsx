@@ -81,13 +81,15 @@ const ProductForm = () => {
           setSize(e.target.value);
           var index = -1;
           for(var i = 0; i < sizes.length; i++) {
+
             if(sizes[i].size === e.target.value){
+
               index = i;
             }
           }
           var tempQuantity;
           if(index<0){
-            tempQuantity = 0;
+            tempQuantity = -1;
           } else {
             tempQuantity = sizes[index].quantity;
           }
@@ -95,12 +97,16 @@ const ProductForm = () => {
           for(i = 1; i <= tempQuantity; i++){
             tempQuantities.push(i);
           }
-          setQuantities(tempQuantities);
-          if(tempQuantity>0){
+
+          if(e.target.value === 'select size'){
+            setQuantities([]);
+            setQuantity(0);
+          } else if(tempQuantity>0){
+            setQuantities(tempQuantities);
             setQuantity(1);
             setInStock(true);
-          }
-          else{
+          } else{
+
             setInStock(false);
 
             //setSizes(['OUT OF STOCK']);

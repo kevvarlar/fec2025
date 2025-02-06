@@ -14,13 +14,6 @@ const App = ({product, overview, logo}) => {
   const dispatch = useDispatch();
   const [currPage, setCurrPage] = React.useState(1);
   const Product = useSelector(store => store.Product);
-  // if (product.error) {
-  //   if (product.error.response?.status === 429) {
-  //     swal('Sorry!', 'Traffic is full please refresh your browser', 'warning');
-  //   } else {
-  //     swal('Error!', 'Error while retrieving questions', 'error');
-  //   }
-  // }
 
   useEffect(() => {
     if (Product.id) {

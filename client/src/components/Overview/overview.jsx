@@ -72,10 +72,11 @@ const Overview = ({overview}) => {
   useEffect(() => {
 
     setPrice('$' + Product.default_price);
-    if(GalleryData.sale_price){
+
+    if(GalleryData.Gallery.sale_price){
       setPrice(
       <p style={{color:'red'}}><s>{Product.default_price}</s>&nbsp;
-      {GalleryData.sale_price} </p>
+      {GalleryData.Gallery.sale_price} </p>
     )
 
     }
