@@ -9,7 +9,6 @@ const Page = async () => {
       return {gallery: result.data.results[0], picture: result.data.results[0].photos[0].url, styles: result.data.results, price: '$' + product.default_price}
     }
   })
-  console.log(overview);
   return <ClientOnly product={product} overview={overview}/>
 }
 
